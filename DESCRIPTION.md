@@ -5,6 +5,10 @@
 A ideia do projeto é simular uma empresa que precisa fazer pesquisas, aqui pode-se cadastrar as perguntas
 o tipo de resposta que pode ser aceita e a origem se é uma pesquisa interna ou externa
 
+As pesquisas internas são feitos na propria empresa, sendo assim elas somente serão respondidas
+via email
+
+Ja as pesquisas externas são feitas por ligação!!
 
 ### Padrões utilizados
 * Singleton
@@ -23,3 +27,6 @@ o tipo de resposta que pode ser aceita e a origem se é uma pesquisa interna ou 
 
 
 O projeto ta meio sem vergonha é que estava meio sem ideia  kkkk
+
+
+referencias

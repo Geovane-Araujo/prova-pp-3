@@ -3,6 +3,9 @@ package org.prova;
 import org.prova.connectiondb.ConnectionDb;
 import org.prova.controller.PerguntasController;
 import org.prova.controller.iterator.perguntas.PerguntasIteratorImpl;
+import org.prova.controller.strategy.PesquisaEmpresa;
+import org.prova.controller.strategy.PesquisaExterna;
+import org.prova.controller.strategy.PesquisaInterna;
 import org.prova.enuns.Origem;
 import org.prova.enuns.TipoResposta;
 import org.prova.model.Menu;
@@ -45,7 +48,9 @@ public class Main {
                 break;
             case 2:
                 do{
-
+                    pesquisar();
+                    System.out.println("Deseja continuar cadastrando? 0 pra sim, 1 para sair");
+                    resposta = validateUSerDigit(scan.nextLine());
                 } while (resposta == 0);
                 break;
             case 3:
@@ -53,6 +58,20 @@ public class Main {
             default:
                 return;
         }
+    }
+
+    private static void pesquisar() {
+        PesquisaEmpresa pe;
+        Scanner scan = new Scanner(System.in);
+        int resposta = 0;
+        System.out.println("Qual pesquisa será aplicada? 1 pra interno, 2 para externo");
+        resposta = validateUSerDigit(scan.nextLine());
+        if(resposta == 0)
+            pe = new PesquisaInterna();
+        else
+            pe = new PesquisaExterna();
+
+        pe.perguntar();
     }
 
     private static Perguntas createQuest() {
