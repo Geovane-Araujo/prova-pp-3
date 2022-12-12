@@ -1,7 +1,7 @@
 package org.prova;
 
 import org.prova.connectiondb.ConnectionDb;
-import org.prova.controller.iterator.PerguntasController;
+import org.prova.controller.PerguntasController;
 import org.prova.controller.iterator.perguntas.PerguntasIteratorImpl;
 import org.prova.enuns.Origem;
 import org.prova.enuns.TipoResposta;
@@ -9,7 +9,6 @@ import org.prova.model.Menu;
 import org.prova.model.Perguntas;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -30,9 +29,10 @@ public class Main {
 
     static void acoes(int opcao){
         Scanner scan = new Scanner(System.in);
+        int resposta = 0;
         switch (opcao){
             case 1:
-                int resposta = 0;
+
                 PerguntasIteratorImpl perguntasIterator = new PerguntasIteratorImpl();
                 do{
                     Perguntas pergunta = createQuest();
@@ -44,6 +44,9 @@ public class Main {
                 PerguntasController.onInsert(perguntasIterator);
                 break;
             case 2:
+                do{
+
+                } while (resposta == 0);
                 break;
             case 3:
                 break;
