@@ -2,6 +2,7 @@ package org.prova;
 
 import org.prova.connectiondb.ConnectionDb;
 import org.prova.controller.PerguntasController;
+import org.prova.controller.RespostasController;
 import org.prova.controller.iterator.perguntas.PerguntasIteratorImpl;
 import org.prova.controller.strategy.PesquisaEmpresa;
 import org.prova.controller.strategy.PesquisaExterna;
@@ -49,11 +50,16 @@ public class Main {
             case 2:
                 do{
                     pesquisar();
-                    System.out.println("Deseja continuar cadastrando? 0 pra sim, 1 para sair");
+                    System.out.println("Deseja continuar com a pesquisa? 0 pra sim, 1 para sair");
                     resposta = validateUSerDigit(scan.nextLine());
+
                 } while (resposta == 0);
                 break;
             case 3:
+                    System.out.println("Deseja continuar com a pesquisa? 1 pra interno, 1 para externo");
+                    resposta = validateUSerDigit(scan.nextLine());
+                    if(resposta == 1)
+                        RespostasController.onGetAll(Origem.INTERNO).forEach(item -> System.out.println(item.toString()));
                 break;
             default:
                 return;
@@ -66,7 +72,7 @@ public class Main {
         int resposta = 0;
         System.out.println("Qual pesquisa será aplicada? 1 pra interno, 2 para externo");
         resposta = validateUSerDigit(scan.nextLine());
-        if(resposta == 0)
+        if(resposta == 1)
             pe = new PesquisaInterna();
         else
             pe = new PesquisaExterna();
@@ -127,7 +133,6 @@ public class Main {
         return Arrays.asList(new Menu(1,"Cadastrar Perguntas"),
                 new Menu(2,"Fazer Pesquisa"),
                 new Menu(2,"Ver Respostas"),
-                new Menu(3,"Sair"),
-                new Menu(4,"Menu 4"));
+                new Menu(3,"Sair"));
     }
 }

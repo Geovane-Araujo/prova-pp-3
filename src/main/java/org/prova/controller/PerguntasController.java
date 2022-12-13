@@ -50,7 +50,7 @@ public class PerguntasController {
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
-                perguntasIterator.add(new Perguntas(rs.getInt(0),rs.getString(1),TipoResposta.valueOf(rs.getString(2)),Origem.valueOf(rs.getString(3))));
+                perguntasIterator.add(new Perguntas(rs.getInt(1),rs.getString(2),TipoResposta.valueOf(rs.getString(3)),Origem.valueOf(rs.getString(4))));
             }
             // aqui uso o padrão iterator pra salvar na base a lista de perguntas
 
@@ -58,7 +58,7 @@ public class PerguntasController {
             rs.close();
 
         } catch (SQLException ex) {
-            System.out.println("Falha ao inserir perguntas");
+            System.out.println("Falha ao buscar perguntas");
         }
 
         return perguntasIterator.getAll();
@@ -74,7 +74,7 @@ public class PerguntasController {
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
-                perguntas = new Perguntas(rs.getInt(0),rs.getString(1),TipoResposta.valueOf(rs.getString(2)),Origem.valueOf(rs.getString(3)));
+                perguntas = new Perguntas(rs.getInt(1),rs.getString(2),TipoResposta.valueOf(rs.getString(3)),Origem.valueOf(rs.getString(4)));
             }
             // aqui uso o padrão iterator pra salvar na base a lista de perguntas
 
@@ -82,7 +82,7 @@ public class PerguntasController {
             rs.close();
 
         } catch (SQLException ex) {
-            System.out.println("Falha ao inserir perguntas");
+            System.out.println("Falha ao consultar perguntas");
         }
 
         return perguntas;

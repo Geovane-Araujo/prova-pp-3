@@ -40,4 +40,9 @@ public class Respostas {
     public void setResposta(String resposta) {
         this.resposta = resposta;
     }
+
+    @Override
+    public String toString() {
+        return "id: " + id + " - pergunta: " + perguntas.getPergunta() + " - resposta: " + resposta;
+    }
 }

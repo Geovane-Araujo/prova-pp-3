@@ -40,7 +40,7 @@ public class RespostasController {
     public static List<Respostas> onGetAll(Origem origem){
         RespostasIteratorImpl respostasIterator = new RespostasIteratorImpl();
         try{
-            String sql = "select * from respostas inner join perguntas on perguntas.id = respostas.idpergunta where perguntas.origen = '"+origem.toString()+"'";
+            String sql = "select respostas.* from respostas inner join perguntas on perguntas.id = respostas.idpergunta where perguntas.origem = '"+origem.toString()+"'";
 
             PreparedStatement stmt = ConnectionDb.getInstance().getConnection().prepareStatement(sql);
             stmt.execute();
@@ -48,9 +48,9 @@ public class RespostasController {
 
             while(rs.next()){
                 Respostas r = new Respostas();
-                r.setPerguntas(PerguntasController.onGetById(rs.getInt(2)));
-                r.setResposta(rs.getString(1));
-                r.setId(rs.getInt(0));
+                r.setPerguntas(PerguntasController.onGetById(rs.getInt(3)));
+                r.setResposta(rs.getString(2));
+                r.setId(rs.getInt(1));
                 respostasIterator.add(r);
             }
             // aqui uso o padrão iterator pra salvar na base a lista de perguntas
@@ -59,7 +59,7 @@ public class RespostasController {
             rs.close();
 
         } catch (SQLException ex) {
-            System.out.println("Falha ao inserir perguntas");
+            System.out.println("Falha ao consultar respostas");
         }
 
         return respostasIterator.getAll();

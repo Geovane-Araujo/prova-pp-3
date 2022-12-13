@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="PP24S-prova3" />
+        <module name="prova-pp-3" />
       </profile>
     </annotationProcessing>
   </component>
